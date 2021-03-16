@@ -1,23 +1,34 @@
-import logo from './logo.svg';
 import './App.css';
+import {Route,Switch} from 'react-router-dom'
+import LandingPage from './components/LandingPage'
+import Login from './components/Login'
+import Register from './components/RegisterUser'
+import AddIssue from './components/AddIssue'
+import DeleteIssue from './components/DeleteIssue'
+import UpdateIssue from './components/UpdateIssue'
+import HomePage from './components/HomePage'
+import MyAccount from './components/MyAccount'
+import About from './components/About'
+import Logout from './components/Logout'
 
 function App() {
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+                    <Switch>
+                        <Route exact path="/" component={LandingPage}/>
+                        <Route  path="/home" component={HomePage} />
+                        <Route  path="/login" component={Login}/>
+                        <Route  path="/register" component={Register}/>
+
+                        <Route  path="/add" component={AddIssue}/>
+                        <Route  path="/delete/:index" component={DeleteIssue}/>
+                        <Route  path="/update" component={UpdateIssue}/>
+                        <Route  path="/myaccount" component={MyAccount}/>
+                        <Route  path='/about' component={About}/>
+                        <Route  path='/logout' component={Logout}/>
+
+                    </Switch>
     </div>
   );
 }

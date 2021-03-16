@@ -1,0 +1,42 @@
+{
+  "Issues": [
+    {
+      "issuedesc": "Issue Description of issue no 1 hope it works fine",
+      "severity": "Critical",
+      "status": "Closed",
+      "id": 4
+    },
+    {
+      "issuedesc": "Issue Description of issue no 5 hope it works fine",
+      "severity": "Minor",
+      "status": "Closed",
+      "id": 5
+    },
+    {
+      "issuedesc": "On adding to cart the item does not get added",
+      "severity": "Critical",
+      "status": "Open",
+      "id": 6
+    }
+  ],
+  "Users": [
+    {
+      "id": 1,
+      "emailId": "Tulja@c.com",
+      "pwd": "Tulja",
+      "fname": "Tulja",
+      "lname": "Ks",
+      "location": "India",
+      "number": 12234444
+    },
+    {
+      "emailId": "sndp@p.com",
+      "pwd": "sndp",
+      "fname": "sndp",
+      "lname": "ks",
+      "location": "Visakhapatnam",
+      "number": 7382766906,
+      "id": 2
+    }
+  ]
+}
