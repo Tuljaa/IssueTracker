@@ -36,4 +36,17 @@ export default class IssueApi {
         } )
         .catch(error => {throw error});
     }
+
+    static async Visited(value) {
+       data=await axios.put(`http://localhost:3002/Issues/${value.id}`, value)
+       .catch(error => {throw error})
+      // console.log(data)
+    }
+    static async UpdateIssue(index,issue) {
+        data = await axios.put(`http://localhost:3002/Issues/${index}`,issue)
+        .then(response => {
+            console.log(response.data);
+    } )
+    .catch(error => {throw error});
+    }
 }

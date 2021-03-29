@@ -1,14 +1,14 @@
 
 .App-header {
-  background-color: #141516;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  font-family: 'Roboto','Helvetica Neue', Helvetica, Arial, sans-serif;
+  background-color: #f5c0c0;
+  margin-right: 0%;
 }
 
 .Login {
-  border: 1px solid rgba(128, 128, 128, 0.849);
+  border: 1px solid rgba(226, 216, 216, 0.849);
   border-radius: 0.50rem;
   box-shadow: 0 20px 40px -14px rgba(0,0,0,0.50);
   width:fit-content;
@@ -19,17 +19,31 @@
   font-size: 16px;
   cursor: pointer;
   margin-top: 5%;
+  font-family: 'Roboto','Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 .Field {
-  width: 70%;
+  width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
   border: none;
   border-bottom: 2px solid rgba(128, 128, 128, 0.849);
+  font-family: 'Roboto','Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: medium;
 }
 .form_validation {
-  color: red;
-  font-size: smaller;
-   
+  color: #f39189;
+  font-size: small;
+  font-family: 'Roboto','Helvetica Neue', Helvetica, Arial, sans-serif;
 }
+@media only screen and (min-width: 400px) {
+  .media {   margin-left:150px !important;margin-top: 2% !important;padding: 1% !important;
+      }
+}
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .media { margin-left:1100px !important;display:inline-block !important
+  }
+}
+
+

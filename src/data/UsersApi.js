@@ -1,29 +1,32 @@
 import axios from 'axios';
 
 let userStatus = { authStatus: 'false' }
-let data
+export let userDetails= {}
+
 
 export default class UserApi {
 
     static async checkUser(logindetails){
 
-       data =  await axios.get('http://localhost:3002/Users')
-        .then((response) => {
-            return {
-                data : response.data,
-            }
-        } ).then ( (data) => {
-
-            (data.data).filter( (value,index) => {
+      let data =  await axios.get('http://localhost:3002/Users')
+       .then ( (response) => {
+            (response.data).filter( (value,index) => {
                 //console.log(logindetails.emailId,value.emailId,value.pwd,logindetails.pwd)
                 if (logindetails.emailId===value.emailId && logindetails.pwd=== value.pwd){
-                    userStatus={...value,authStatus: true}
+                    userDetails={...value}
+                    userStatus={authStatus: true}
                 }
+                console.log(userDetails)
                 return userStatus
             }) 
         })
         .catch(error => {throw error});       
         return userStatus;
+    }
+
+    static getUserDetails(){
+      //  console.log(userDetails)
+        return userDetails
     }
    
     static async registerUser(details){

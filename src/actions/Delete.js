@@ -5,7 +5,7 @@ export function DeleteIssues (index) {
     console.log(index)
     return (dispatch) => {
              IssueApi.deleteIssue(index).then ( 
-                data => {
+                () => {
                     dispatch(InitializeIssues());
                 }
             ).catch ( 

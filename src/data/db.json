@@ -1,42 +1,51 @@
 {
   "Issues": [
     {
-      "issuedesc": "Issue Description of issue no 1 hope it works fine",
-      "severity": "Critical",
-      "status": "Closed",
-      "id": 4
-    },
-    {
-      "issuedesc": "Issue Description of issue no 5 hope it works fine",
-      "severity": "Minor",
-      "status": "Closed",
-      "id": 5
-    },
-    {
-      "issuedesc": "On adding to cart the item does not get added",
+      "issuedesc": "Adding issue as payment is in pending state",
       "severity": "Critical",
       "status": "Open",
-      "id": 6
+      "created": "2021-03-22",
+      "resolved": "2021-03-31",
+      "id": 1,
+      "visited": 16
+    },
+    {
+      "issuedesc": "Unable to display data of customer in My accounts Page",
+      "severity": "Major",
+      "status": "Open",
+      "created": "2021-03-27",
+      "resolved": "2021-04-28",
+      "id": 2,
+      "visited": 4
+    },
+    {
+      "issuedesc": "Heading of Application is overlaping in mobile view",
+      "severity": "Critical",
+      "status": "Closed",
+      "created": "2021-03-27",
+      "resolved": "2021-04-21",
+      "id": 3,
+      "visited": 1
+    },
+    {
+      "issuedesc": "Issue Using YUP and Formik",
+      "severity": "Critical",
+      "status": "Closed",
+      "created": "2021-03-27",
+      "resolved": "2021-03-31",
+      "id": 4,
+      "visited": 3
     }
   ],
   "Users": [
     {
       "id": 1,
       "emailId": "Tulja@c.com",
-      "pwd": "Tulja",
+      "pwd": "Tuljakshatri",
       "fname": "Tulja",
       "lname": "Ks",
       "location": "India",
       "number": 12234444
-    },
-    {
-      "emailId": "sndp@p.com",
-      "pwd": "sndp",
-      "fname": "sndp",
-      "lname": "ks",
-      "location": "Visakhapatnam",
-      "number": 7382766906,
-      "id": 2
     }
   ]
 }

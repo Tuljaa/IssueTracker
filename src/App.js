@@ -17,16 +17,16 @@ function App() {
     <div className="App">
                     <Switch>
                         <Route exact path="/" component={LandingPage}/>
-                        <Route  path="/home" component={HomePage} />
-                        <Route  path="/login" component={Login}/>
-                        <Route  path="/register" component={Register}/>
+                        <Route  exact path="/home" component={HomePage} />
+                        <Route  exact path="/login" component={Login}/>
+                        <Route  exact path="/register" component={Register}/>
 
-                        <Route  path="/add" component={AddIssue}/>
-                        <Route  path="/delete/:index" component={DeleteIssue}/>
-                        <Route  path="/update" component={UpdateIssue}/>
-                        <Route  path="/myaccount" component={MyAccount}/>
-                        <Route  path='/about' component={About}/>
-                        <Route  path='/logout' component={Logout}/>
+                        <Route  exact path="/add" component={AddIssue}/>
+                        <Route  exact path="/delete/:index" component={DeleteIssue}/>
+                        <Route  exact path="/update" component={UpdateIssue}/>
+                        <Route exact path="/myaccount" component={MyAccount}/>
+                        <Route  exact path='/about' component={About}/>
+                        <Route  exact path='/logout' component={Logout}/>
 
                     </Switch>
     </div>

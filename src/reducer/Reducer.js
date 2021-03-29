@@ -30,7 +30,6 @@ export default function Reducer( state = IssueData , action ) {
         return IssueData
     }
     /*case ActionTypes.LOGOUT : {
-      let Logout_success= action.payload;
       IssueData= {...state,auth:Login_success}
       console.log(IssueData,Login_success);
        return IssueData

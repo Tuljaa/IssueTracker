@@ -5,7 +5,9 @@ import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
 import {connect} from 'react-redux'
 import UsersApi from '../data/UsersApi'
-import {Link} from 'react-router-dom'
+import  Confirmation from './Confirmation'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const initialValues = {
   emailId : '',
@@ -17,12 +19,17 @@ const initialValues = {
 }
 
 const validationSchema = Yup.object({
-  emailId : Yup.string().required(" * Email ID is Required"),
-  pwd : Yup.string().required("* Password Required ")
+  emailId : Yup.string().email().required(" * Email ID is Required"),
+  pwd : Yup.string().required("* Password Required "),
+  fname: Yup.string().required("* Required"),
+  lname : Yup.string().required("* Required"),
+  location : Yup.string().required("* Required"),
+  number : Yup.number().required("* Required")
 })
 
 function RegisterUser(props) {
     console.log(props);
+    const fail = (str) => toast.error(str);
  
     const onSubmit = async values => {
      let msg =  await UsersApi.registerUser(values).then( (response) => {
@@ -32,17 +39,17 @@ function RegisterUser(props) {
       }).catch(error => {throw error} )
      console.log(msg)
      if(msg.successMsg===false){
-        alert("EmailID already registered")
+      fail("EmailID already registered !!! ")
      }
      else{
        props.history.replace('/login')
      }
     }
 
-
   return (
-    <Container  maxWidth="sm" className='Login'>
-      <h1>Register</h1>
+    <div className="App-header" >
+    <Container  maxWidth="sm" className='Login'style={{backgroundColor:'#f0e4d7'}}>
+      <h1 style={{textAlign:'center'}}>Register</h1>
       <Formik
       initialValues={initialValues}
       onSubmit={onSubmit}
@@ -77,13 +84,14 @@ function RegisterUser(props) {
           <p className="form_validation"> <ErrorMessage name ="number"/> </p>
                         <br></br>
 
-          <Button variant="contained" type="submit" color="primary">Create Account</Button>
-          <Button type="submit" variant="contained" color="secondary" style={{marginLeft:'5%'}}>
-            <Link to='/' style={{textDecoration:'none',color:'white'}} > Cancel </Link>
-            </Button>
+          <Button variant="contained" type="submit" color="primary" style ={{width: '100%',backgroundColor:'#9fd8df'}}>Create Account</Button>
+          <br></br><br></br>
+          < Confirmation />
+          <ToastContainer position="top-center"/>
         </Form>
       </Formik>
     </Container>
+    </div>
   );
 }
 const mapStateToProps = (state, ownProps) =>{

@@ -29,23 +29,27 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,
-    display: 'none',
+    //display: 'none',
+    fontSize : '20px',   
     [theme.breakpoints.up('sm')]: {
       display: 'block',
+      textAlign: 'center',
+      marginLeft : '15%',
     },
   },
   search: {
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.white, 0.15),
+    backgroundColor: fade(theme.palette.common.black, 0.10),
     '&:hover': {
-      backgroundColor: fade(theme.palette.common.white, 0.25),
+      backgroundColor: fade(theme.palette.common.black, 0.25),
     },
-    marginRight: 0,
-    width: '100%',
+    marginLeft: 0,
+    width: '50%',
     [theme.breakpoints.up('sm')]: {
-      marginLeft: theme.spacing(5),
-      width: 'auto',
+      marginLeft: theme.spacing(1),
+      width: '30%'
+      
     },
   },
   searchIcon: {
@@ -91,7 +95,7 @@ const useStyles = makeStyles((theme) => ({
     }),
   },
   menuButton: {
-    marginRight: theme.spacing(2),
+   marginLeft : 0
   },
   hide: {
     display: 'none',
@@ -102,6 +106,7 @@ const useStyles = makeStyles((theme) => ({
   },
   drawerPaper: {
     width: drawerWidth,
+    background: '#9fd8df' 
   },
   drawerHeader: {
     display: 'flex',
@@ -146,15 +151,23 @@ const NavSearch = (props) => {
     setOpen(false);
   };
 
-  const paths=['/add','/update']
+  const paths=['/add']
   const paths1 =[ '/about' , '/myaccount' , '/register' , '/login' , '/logout']
 
+  //console.log(props.storeData)
+
+  const search=(e) => {
+    let keyword = e.target.value;
+    props.getKeySearch(keyword)
+  } 
+
   return (
+
     <div className={classes.root}>
       <AppBar position="static"
               className={clsx(classes.appBar, {
                 [classes.appBarShift]: open,
-              })} >
+              })}     style={{ background: '#9fd8df' }} >
         <Toolbar>
         <IconButton
             color="inherit"
@@ -163,14 +176,14 @@ const NavSearch = (props) => {
             edge="start"
             className={clsx(classes.menuButton, open && classes.hide)}
           >
-            <MenuIcon />
+            <MenuIcon  style={{color:'black'}}/>
           </IconButton>
-          <Typography className={classes.title} variant="h5" noWrap>
+          <Typography className={classes.title} variant="h4" noWrap  style={{color:'black'}}> 
             Issue Tracker
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
-              <SearchIcon />
+              <SearchIcon  style={{color:'black'}}/>
             </div>
             <InputBase
               placeholder="Search…"
@@ -178,8 +191,11 @@ const NavSearch = (props) => {
                 root: classes.inputRoot,
                 input: classes.inputInput,
               }}
+              style={{color:'black'}}
               inputProps={{ 'aria-label': 'search' }}
+              onChange = {(e)=> search(e)}
             />
+         
           </div>
         </Toolbar>
       </AppBar>
@@ -192,10 +208,11 @@ const NavSearch = (props) => {
         classes={{
           paper: classes.drawerPaper,
         }}
+    
       >
         <div className={classes.drawerHeader}>
         <div className={classes.drawerHeader} ><AccountBoxIcon /> 
-        { (props.userData !== undefined) ? 
+        { (props.storeData.auth)&&(props.userData !== undefined) ? 
         <h5> Welcome,{props.userData.fname} </h5> : <h5>Hello,Sign in</h5> } 
         </div>
           <IconButton onClick={handleDrawerClose}>
@@ -205,7 +222,7 @@ const NavSearch = (props) => {
         <Divider />
         <List>
           {
-          ['Add Issue', 'Update Issue'].map((text, index) => (
+          ['Add Issue'].map((text, index) => (
              
             <ListItem button key={index}>
             <Link to= {paths[index]} style={{textDecoration:'none',color:'black'}} > <ListItemText primary={text} /> </Link> 
@@ -227,8 +244,10 @@ const NavSearch = (props) => {
 }
 
 const mapStateToProps = (state,ownProps) => {
+  //console.log("state In NavSearch", state.UserReducer.Udata)
   return {
-    userData: state.UserReducer.Udata
+    userData: state.UserReducer.Udata,
+    storeData: state.Reducer
   };
 }
 export default connect(mapStateToProps,null) (NavSearch)
