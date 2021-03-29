@@ -36,11 +36,11 @@ describe ( 'Home Page Component', () => {
      }
 
  const mockStore = configureStore([])
- const historyMock = { push: jest.fn(), location : {pathname : '/login'} };
+ const historyMock = { push: jest.fn(), location : {pathname : '/login'} , replace : jest.fn() };
  const location = {
   state : {
     selectedIssue :{
-      "issuedesc": "The Heading add is wrongly displayed as Edit BY TULJA adding resolved and created date as well",
+      "issuedesc": "The Heading add is wrongly displayed as Edit",
       "severity": "Major",
       "status": "Closed",
       "created": "2021-02-02",
@@ -50,18 +50,20 @@ describe ( 'Home Page Component', () => {
     }
   }
 } 
+
+var onSubmit=jest.fn().mockImplementation( (values)=> {
+   props.actions.AddIssues(values)
+   history.replace('/');
+ })
+
  let wrapper;
  let store;
     beforeEach( () => {
       store = mockStore(state)
-      const onSubmit=jest.fn().mockImplementation( (values)=> {
-          
-      })
-
      wrapper = mount(
       <Router>
      <Provider store={store}>
-       <AddIssue history={historyMock} location={location} onSubmit={onSubmit}/>
+       <AddIssue history={historyMock} location={location}/>
      </Provider> </Router>
    ); 
     
@@ -90,6 +92,16 @@ describe ( 'Home Page Component', () => {
   })
   it('Should render Bread component',()=>{
     expect(wrapper.find('Formik')).toBeTruthy()
+  })
+  it ('should render correct heading name' , () => {
+    expect(wrapper.find('h1').text()).toContain('Add Issue');
+  });
+
+  it('should call onSubmit',()=>{
+   
+     onSubmit(location.state.selectedIssue)
+    // console.log(wrapper.props().actions)
+     expect(onSubmit).toHaveBeenCalled()
   })
  
 }

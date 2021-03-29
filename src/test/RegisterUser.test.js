@@ -57,11 +57,15 @@ describe ( 'RegisterUser Component', () => {
       let dv = wrapper.find('ToastContainer')
       expect(dv.length).toEqual(1);
   });
-  it('should render HomePage', () => {
-    let dv = wrapper.find('h1')
-    expect(dv.length).toEqual(1);
-});
-  
+  it ('should render correct heading name' , () => {
+    expect(wrapper.find('h1').text()).toContain('Register');
+  });
+  it('Should render Bread component',()=>{
+    expect(wrapper.find('Formik')).toBeTruthy()
+  })
+  it('Should render Bread component',()=>{
+    expect(wrapper.find('label').length).toEqual(6)
+  })
  
 }
 )

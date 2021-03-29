@@ -72,7 +72,7 @@ describe ( 'Home Page Component', () => {
     it ('should render one NavSearch Component ' , () => {
       expect(wrapper.find('NavSearch').length).toEqual(1)
     });
-    it('should render HomePage', () => {
+    it('should render div', () => {
       let dv = wrapper.find('div')
       expect(dv.length).toEqual(26);
   });
@@ -80,6 +80,14 @@ describe ( 'Home Page Component', () => {
     let dv = wrapper.find('Pie')
     expect(dv.length).toEqual(1);
   });
-
+  it('should state.Reducer.auth', () => {
+    expect(state.Reducer.auth === true).toEqual(true)
+  });
+  it('should render Bread', () => {
+    expect(wrapper.find('Bread').length).toEqual(1)
+  });
+  it('should render Typography', () => {
+    expect(wrapper.find('Card Typography')).toBeTruthy()
+  });
 }
 )

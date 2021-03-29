@@ -95,24 +95,18 @@ describe ('LandingPage component',()=>{
   it('should render Delete Icon', () => {
     expect(wrapper.find('DeleteForeverIcon')).toBeTruthy()
   });
-  it ('should call changekey function', () => {
+  it ('should call scrollToTop function', () => {
     scrollToTop()
     expect(scrollToTop).toHaveBeenCalledTimes(1)
   });
-  it ('should cover Line 72 ', () => {
+  it ('should cover window.scrollTo', () => {
    global.scrollTo = jest.fn()
    global.scrollTo()
    expect(global.scrollTo).toBeCalled()
   });
-  it('should cover line 64-67',()=>{
-    toggleVisibility()
-    console.log(toggleVisibility.mock.calls)
-   
-
-    changekey("Tulja")
-    expect(changekey).toBeCalled()
-    console.log(changekey.mock.calls[0][0])
-  })
- 
+  it('should call toggleVisibility',()=>{
+    toggleVisibility()  
+    expect(toggleVisibility).toBeCalled()
+  }) 
 }
 )

@@ -21,10 +21,10 @@ const validationSchema = Yup.object({
 })
 
 const UpdateIssue = (props) =>{
-    console.log(props);
+    //console.log(props);
 
    const history = useHistory();
-   console.log(props.location.state.updateIssue)
+  // console.log(props.location.state.updateIssue)
 
    const initialValues = {
      

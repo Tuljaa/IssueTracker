@@ -32,6 +32,8 @@ const AddIssue = (props) => {
   
   const history = useHistory();
 
+  //console.log(props)
+
   const onSubmit =  values => {
     //console.log(values)
    props.actions.AddIssues(values)

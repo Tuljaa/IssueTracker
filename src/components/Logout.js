@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const Logout = (props) => {
 
-    console.log(props)
+    //console.log(props)
     const fail = (str) => toast.error(str);
 
     return(

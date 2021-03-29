@@ -67,15 +67,23 @@ describe ( 'RegisterUser Component', () => {
     
     } );
    
-    it('should render HomePage', () => {
+    it('should render NavSeacrch Component', () => {
       let dv = wrapper.find('NavSearch')
       expect(dv.length).toEqual(1);
   });
-  it('should render HomePage', () => {
+  it('should render Form Component ', () => {
     let dv = wrapper.find('Form')
     expect(dv.length).toEqual(1);
 });
+it ('should render correct Heading name' , () => {
+  expect(wrapper.find('h1').text()).toContain('Update Issue ');
+});
+it('Should render Formik component',()=>{
+  expect(wrapper.find('Formik')).toBeTruthy()
+})
   
- 
+it('Should render Confirmation component',()=>{
+  expect(wrapper.find('Confirmation').length).toEqual(1)
+})
 }
 )

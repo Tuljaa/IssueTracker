@@ -59,9 +59,15 @@ describe ( 'Home Page Component', () => {
       expect(dv.length).toEqual(5);
   });
   
-  it ( '', () => {
-    let dv = wrapper.find('Form')
-    expect(dv.length).toEqual(1); }
+  it ( 'should render Form', () => {
+    let form = wrapper.find('Form')
+    expect(form.length).toEqual(1); }
   )
+  it('should render Container', () => {
+    expect(wrapper.find('Container')).toBeTruthy()
+});
+it ('should render correct heading name' , () => {
+  expect(wrapper.find('h1').text()).toContain('Sign In');
+});
 }
 )
