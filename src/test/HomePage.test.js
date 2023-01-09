@@ -1,14 +1,12 @@
-import { shallow , mount } from 'enzyme';
+import {mount } from 'enzyme';
 import React from 'react';
 import HomePage from '../components/HomePage';
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import toJson from 'enzyme-to-json'
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 Enzyme.configure({ adapter: new Adapter() });
 import configureStore from 'redux-mock-store';
-import { render, fireEvent } from '@testing-library/react';
 
 describe ( 'Home Page Component', () => {
     const state = { Reducer :{ 
@@ -52,8 +50,6 @@ describe ( 'Home Page Component', () => {
     }
   }
 } 
-
-
  let wrapper;
  let store;
 
@@ -69,16 +65,12 @@ describe ( 'Home Page Component', () => {
     
     } );
    
-    it ('should render one NavSearch Component ' , () => {
+  it ('should render one NavSearch Component ' , () => {
       expect(wrapper.find('NavSearch').length).toEqual(1)
     });
-    it('should render div', () => {
+  it('should render div', () => {
       let dv = wrapper.find('div')
-      expect(dv.length).toEqual(26);
-  });
-  it('should render Pie graph', () => {
-    let dv = wrapper.find('Pie')
-    expect(dv.length).toEqual(1);
+      expect(dv.length).toEqual(28);
   });
   it('should state.Reducer.auth', () => {
     expect(state.Reducer.auth === true).toEqual(true)

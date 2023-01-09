@@ -5,6 +5,9 @@ import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import { useEffect, useState } from "react";
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
+import FacebookIcon from '@material-ui/icons/Facebook';
+import TwitterIcon from '@material-ui/icons/Twitter';
+import LinkedInIcon from '@material-ui/icons/LinkedIn';
 
 const About = (props) => {
 
@@ -28,6 +31,8 @@ const About = (props) => {
     useEffect(() => {
         window.addEventListener("scroll", toggleVisibility);
       }, []);
+
+     // console.log(props)
 
     return(
         <div className="App-header">
@@ -78,8 +83,11 @@ A Issue tracking system is usually a necessary component of a professional softw
                 </div>}
             </div>
          
-            <footer style={{textAlign:'center'}}>
-               <p> Contact US : 1234567809 </p>
+            <footer style={{justifyContent:'center' ,display:'flex',flexDirection:'row'}} >
+               <p> Contact Us : 1234567809 </p>
+               <FacebookIcon style={{marginLeft:'1%',marginTop:'1%'}}/>
+               <TwitterIcon style={{marginLeft:'1%',marginTop:'1%'}}/>
+               <LinkedInIcon style={{marginLeft:'1%',marginTop:'1%'}}/>
             </footer>
         </div>
     )

@@ -10,7 +10,8 @@ import * as Update from '../actions/Update'
 import {bindActionCreators} from 'redux'
 import Bread from './Bread'
 import  Confirmation from './Confirmation'
-
+import PromptUser from './PromptUser'
+import { useState } from "react";
 
 const validationSchema = Yup.object({
   issuedesc : Yup.string().required(" * Issue Description is Required"),
@@ -24,6 +25,7 @@ const UpdateIssue = (props) =>{
     //console.log(props);
 
    const history = useHistory();
+   let [isBlocking, setIsBlocking] = useState(true);
   // console.log(props.location.state.updateIssue)
 
    const initialValues = {
@@ -36,8 +38,9 @@ const UpdateIssue = (props) =>{
   }
 
    const onSubmit =  values => {
+    setIsBlocking(false);
     props.actions.updateIssue(props.location.state.updateIssue.id,values)
-     history.replace('/');
+    history.replace('/');
   }
  
   return (
@@ -106,12 +109,13 @@ const UpdateIssue = (props) =>{
                         <br></br>
 
                 
-               <Button type="submit" variant="contained"  style ={{width: '100%', backgroundColor:'#9fd8df'}}>
+               <Button type="submit" variant="contained"  style ={{width: '100%', backgroundColor:'#9fd8df'}} data-test="btn">
                  Submit</Button><br></br><br></br>
                < Confirmation />
 
              </Form>
          </Formik>
+         {isBlocking ?  (<PromptUser/>)  : null}   
               </div> :
        ( props.history.push('/login') )
    }

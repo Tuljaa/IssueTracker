@@ -18,19 +18,29 @@ import {bindActionCreators} from 'redux'
 import * as View from '../actions/Views'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import CheckBoxes from './CheckBoxes'
+import {InitializeIssues } from '../actions/Initialize'
 
-const useStyles = makeStyles({
+const useStyles = makeStyles( (theme) => ({
   root: {
-    display: 'flex',
+    flexGrow: 2,
     flexWrap : 'wrap',
+    flexBasis: '300px',
+    display: 'flex',
     'border-radius': '0.50rem',
+    padding: theme.spacing(1),
     'box-shadow':' 0 20px 40px -14px rgba(0,0,0,0.50)',
-    height:'90%',
-    width: '90%',
+    width:'30%',
+    [theme.breakpoints.up('sm')]: {
+      marginLeft: theme.spacing(1),
+      width: '20%'
+    },
   }, 
-});
+
+}));
 
 var flag = 0
+var Value
 
 let entriesArray = null
 function LandingPage(props) {
@@ -41,6 +51,7 @@ function LandingPage(props) {
     keySearch : '',
     entries : []
   })  
+  console.log(props)
   //console.log(props.storeData.ID)
   const changekey = (keySearch) => {
    // console.log(keySearch)
@@ -61,7 +72,7 @@ function LandingPage(props) {
   const [isVisible, setIsVisible] = useState(false);
 
   const toggleVisibility = () => {
-      if (window.pageYOffset > 160) {
+      if (window.pageYOffset > 100) {
         setIsVisible(true);
       } else {
         setIsVisible(false);
@@ -82,7 +93,7 @@ function LandingPage(props) {
     useEffect( () => {
       if (props.storeData.auth === true && flag===0){
         flag = 1;
-        login(" Yayyy.... Sign In Succesful !!!")
+        login(" Signed In !!!")
       }
       if(props.storeData.auth !== true ){
         fail("Please Sign In !!!! ")
@@ -90,6 +101,13 @@ function LandingPage(props) {
       //console.log(flag)
     },[])
 
+    const setData=( (checkedValue)=> {
+        Value =checkedValue;
+         console.log(Value);
+    })
+
+  
+    
   
   return (
 
@@ -97,9 +115,12 @@ function LandingPage(props) {
       
       <NavSearch getKeySearch={changekey}/> <br></br> <br></br> <br></br>
       <ToastContainer position="top-center"/> 
-    <Grid container justify="center" spacing={3}>
-  
-      
+      <CheckBoxes propMethod={setData}/>
+    <Grid container
+  direction="row"
+  justify="center"
+  alignItems="center">
+
     { (props.storeData.IData) && (key.entries.length === 0) ? 
     
     (props.storeData.IData).map( (value, index) => {
@@ -111,9 +132,22 @@ function LandingPage(props) {
             <Typography gutterBottom variant="h5" component="h2">
               Issue#{index+1}
             </Typography>
+            { Value === "issuedesc"?
             <Typography variant="body2" color="textSecondary" component="p">
-              <strong>Issue Description :</strong> {value.issuedesc}
-            </Typography>
+              <strong>Issue Description : </strong>{value.issuedesc}
+            </Typography> :null
+            }
+            { Value === "severity"?
+            <Typography variant="body2" color="textSecondary" component="p">
+
+              <strong> Issue Severity : </strong>{value.severity}
+            </Typography> :null
+            }
+            { Value === "status"?
+            <Typography variant="body2" color="textSecondary" component="p">
+              <strong>Issue Status : </strong>{value.status}
+            </Typography> :null
+            }
           </CardContent>
         </CardActionArea>
         <CardActions>
@@ -140,23 +174,36 @@ function LandingPage(props) {
       
       )
       
-          })  : <div>
-          
-          <Grid container justify="center" spacing={3}>
-            
+          })  : <Grid container
+          direction="row"
+          justify="center"
+          alignItems="center">
               { (key.entries.length !== 0)&&(key.entries!==false) ? 
                  (key.entries).map( (value,index) => {
                   return (
                     <Card className={classes.root} key={index} style={{ display: "block", margin:'2%',backgroundColor:'#f0e4d7'}} variant="outlined">
                     <CardActionArea>
                     <CardContent>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      Issue#{index+1}
-                    </Typography>
-                    <Typography variant="body2" color="textSecondary" component="p">
-                     {value.issuedesc}
-                    </Typography>
-                      </CardContent>
+            <Typography gutterBottom variant="h5" component="h2">
+              Issue#{index+1}
+            </Typography>
+            { Value === "issuedesc"?
+            <Typography variant="body2" color="textSecondary" component="p">
+              <strong>Issue Description : </strong>{value.issuedesc}
+            </Typography> :null
+            }
+            { Value === "severity"?
+            <Typography variant="body2" color="textSecondary" component="p">
+
+              <strong> Issue Severity : </strong>{value.severity}
+            </Typography> :null
+            }
+            { Value === "status"?
+            <Typography variant="body2" color="textSecondary" component="p">
+              <strong>Issue Status : </strong>{value.status}
+            </Typography> :null
+            }
+          </CardContent>
                 </CardActionArea>
                 <CardActions>
                 <Button Button variant="contained" style={{marginLeft:"1%", backgroundColor:'#007580'}} >
@@ -181,8 +228,7 @@ function LandingPage(props) {
                 })
                      : 
                  <h1>Not Data Found</h1> }
-          </Grid> 
-          </div>
+          </Grid>
                 }
 
     </Grid>

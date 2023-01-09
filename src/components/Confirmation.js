@@ -26,7 +26,7 @@ const Confirmation=(props)=> {
   return (
     <div>
       <Button variant="contained"  color="secondary" onClick={handleClickOpen} style ={{width: '100%',backgroundColor:'#ff7171'}}>
-        Cancle
+        Cancel
       </Button>
       <Dialog
         fullScreen={fullScreen}
@@ -35,7 +35,7 @@ const Confirmation=(props)=> {
         aria-labelledby="responsive-dialog-title"
         
       >
-        <DialogTitle style={{backgroundColor : '#9fd8df'}} id="responsive-dialog-title">{"Are you sure you want to cancle ?"}</DialogTitle>
+        <DialogTitle style={{backgroundColor : '#9fd8df'}} id="responsive-dialog-title">{"Are you sure you want to cancel ?"}</DialogTitle>
         <DialogContent style={{backgroundColor : '#9fd8df'}}>
         <DialogContentText >
             If your willing to cancel you will be navigating back to landing page
@@ -44,7 +44,7 @@ const Confirmation=(props)=> {
         <DialogActions style={{backgroundColor : '#9fd8df'}}>
           <Button autoFocus onClick={()=> {
                setOpen(false);
-          }} color='black' autoFocus>
+          }} color='black'>
            <strong>No</strong> 
           </Button>
           <Button onClick={()=> {

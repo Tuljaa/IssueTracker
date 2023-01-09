@@ -9,8 +9,6 @@ import {connect} from 'react-redux'
 import NavSearch from '../components/NavSearch'
 import Bread from '../components/Bread'
 import {Link} from 'react-router-dom'
-import Avatar from '@material-ui/core/Avatar';
-//import Background from '../images'
 
 const useStyles = makeStyles( (theme)=> ({
   root: {
@@ -64,7 +62,7 @@ const MyAccount = (props) => {
         </Typography>
       </CardContent>
       <CardActions>
-      <Button fixed style={{marginLeft:"45%", backgroundColor:'#007580'}}>
+      <Button fixed style={{marginLeft:"40%", backgroundColor:'#007580'}}>
               <Link to="/" style={{textDecoration:'none',color:'white'}}> Back </Link> </Button>
       </CardActions>
     </Card> : ( props.history.push('/login') )

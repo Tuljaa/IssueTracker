@@ -4,17 +4,21 @@ import {bindActionCreators} from 'redux'
 import * as Delete from '../actions/Delete'
 
 function DeleteIssue(props) {
-    console.log(props);
+    //console.log(props);
+
 
   return (
     <div className="App">
        {
-           props.Idata.auth === true ? 
+           props.Idata.auth === true? 
+        
+           window.confirm("Are you sure ?? you want to Delete the issue selected") ?
+           <div>
+          { props.actions.DeleteIssues(props.match.params.index)}
+          { props.history.push('/') } 
+           </div> 
+           :  props.history.push('/') 
 
-             <div>{ 
-                 props.actions.DeleteIssues(props.match.params.index) }
-                { props.history.push('/') } </div>
-           
            : ( props.history.push('/login') )
       }
   

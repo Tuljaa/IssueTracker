@@ -80,9 +80,9 @@ var onSubmit=jest.fn().mockImplementation( (values)=> {
     it ('should render one NavSearch Component ' , () => {
       expect(wrapper.find('NavSearch').length).toEqual(1)
     });
-    it('should render HomePage', () => {
+    it('should render AddIssuePage', () => {
       let dv = wrapper.find('div')
-      expect(dv.length).toEqual(25);
+      expect(dv.length).toEqual(27);
   });
   it('should render Form element', ()=> {
       expect(wrapper.find('Form')).toBeTruthy()

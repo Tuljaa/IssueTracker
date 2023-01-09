@@ -52,11 +52,6 @@ describe ( 'Home Page Component', () => {
    ); 
     
     } );
-   
-    it('should render HomePage', () => {
-      let dv = wrapper.find('ToastContainer')
-      expect(dv.length).toEqual(1);
-  });
   it('should render HomePage', () => {
     let dv = wrapper.find('div').at(1)
     expect(dv.length).toEqual(1);

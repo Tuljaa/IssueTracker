@@ -1,7 +1,6 @@
 import '../App.css';
 import { connect } from 'react-redux'
 import NavSearch from '../components/NavSearch'
-import {Pie} from 'react-chartjs-2'
 import Bread from './Bread'
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -41,33 +40,6 @@ const Homepage = (props) => {
     //console.log(props.Idata.auth )
     const classes = useStyles();
 
-    const data = {
-      
-      datasets: [{
-        backgroundColor: [
-          '#cdc733',
-          '#78c4d4',
-          '#bfb051'
-        ],
-        borderColor : 'black',
-        boxShadow :' 0 20px 40px -14px rgba(0,0,0,0.10)',
-        hoverBackgroundColor: [
-          '#cdc733',
-          '#78c4d4',
-          '#bfb051'
-        ],
-        clip: {left: 50, top: false, right: -12, bottom: 10},
-        rotation : 3,
-        weight : 5,
-        data: (props.Idata.IData).map ( (value,index)=> {
-          return value.visited
-    }),
-      }],
-      labels : (props.Idata.IData).map ( (value,index)=> {
-        return value.issuedesc
-     }),
-   }
-
    if(props.Idata.auth !== true){
   props.history.push('/login') 
    }
@@ -77,14 +49,7 @@ const Homepage = (props) => {
              <NavSearch/> <br></br> 
             <Bread  pathProps = {props.history.location.pathname} /> <br></br>
    
-   { props.Idata.auth === true ? <div>
-
-    <Pie
-             data = {data}
-             options = {{ maintainAspectRatio: true,
-              responsive: true,
-             }}/>
-    
+   { props.Idata.auth === true ? <div>   
     <Card className={classes.root} 
     style={{ display: "block",backgroundColor:'#f0e4d7',margin:'3%',marginLeft:'5%'}} variant="outlined">
         <CardActionArea>

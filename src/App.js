@@ -8,8 +8,11 @@ import DeleteIssue from './components/DeleteIssue'
 import UpdateIssue from './components/UpdateIssue'
 import HomePage from './components/HomePage'
 import MyAccount from './components/MyAccount'
-import About from './components/About'
+import chart from './components/Chart'
 import Logout from './components/Logout'
+import {Suspense , lazy} from 'react'
+const About = lazy( ()=> import('./components/About'))
+
 
 function App() {
 
@@ -25,9 +28,11 @@ function App() {
                         <Route  exact path="/delete/:index" component={DeleteIssue}/>
                         <Route  exact path="/update" component={UpdateIssue}/>
                         <Route exact path="/myaccount" component={MyAccount}/>
-                        <Route  exact path='/about' component={About}/>
                         <Route  exact path='/logout' component={Logout}/>
-
+                        <Route  exact path='/analysis' component={chart}/>
+                        <Suspense fallback={<h1>Loading...</h1>}>
+                        <Route  exact path='/about' component={About} />
+                        </Suspense>
                     </Switch>
     </div>
   );

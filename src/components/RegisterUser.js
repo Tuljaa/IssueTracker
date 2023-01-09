@@ -6,6 +6,8 @@ import Button from '@material-ui/core/Button';
 import {connect} from 'react-redux'
 import UsersApi from '../data/UsersApi'
 import  Confirmation from './Confirmation'
+import PromptUser from './PromptUser'
+import { useState } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -28,16 +30,18 @@ const validationSchema = Yup.object({
 })
 
 function RegisterUser(props) {
-    console.log(props);
+    //console.log(props);
     const fail = (str) => toast.error(str);
+    let [isBlocking, setIsBlocking] = useState(true);
  
     const onSubmit = async values => {
+      setIsBlocking(false);
      let msg =  await UsersApi.registerUser(values).then( (response) => {
       return {
         successMsg : response
       }
       }).catch(error => {throw error} )
-     console.log(msg)
+     //console.log(msg)
      if(msg.successMsg===false){
       fail("EmailID already registered !!! ")
      }
@@ -90,6 +94,7 @@ function RegisterUser(props) {
           <ToastContainer position="top-center"/>
         </Form>
       </Formik>
+      {isBlocking ?  (<PromptUser/>)  : null}   
     </Container>
     </div>
   );

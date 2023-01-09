@@ -151,7 +151,7 @@ const NavSearch = (props) => {
     setOpen(false);
   };
 
-  const paths=['/add']
+  const paths=['/add','/analysis']
   const paths1 =[ '/about' , '/myaccount' , '/register' , '/login' , '/logout']
 
   //console.log(props.storeData)
@@ -222,7 +222,7 @@ const NavSearch = (props) => {
         <Divider />
         <List>
           {
-          ['Add Issue'].map((text, index) => (
+          ['Add Issue','Analysis'].map((text, index) => (
              
             <ListItem button key={index}>
             <Link to= {paths[index]} style={{textDecoration:'none',color:'black'}} > <ListItemText primary={text} /> </Link> 

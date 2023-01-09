@@ -7,16 +7,7 @@
       "created": "2021-03-22",
       "resolved": "2021-03-31",
       "id": 1,
-      "visited": 16
-    },
-    {
-      "issuedesc": "Unable to display data of customer in My accounts Page",
-      "severity": "Major",
-      "status": "Open",
-      "created": "2021-03-27",
-      "resolved": "2021-04-28",
-      "id": 2,
-      "visited": 4
+      "visited": 14
     },
     {
       "issuedesc": "Heading of Application is overlaping in mobile view",
@@ -25,16 +16,69 @@
       "created": "2021-03-27",
       "resolved": "2021-04-21",
       "id": 3,
+      "visited": 2
+    },
+    {
+      "issuedesc": "On adding to cart the item does not get added",
+      "severity": "Critical",
+      "status": "Closed",
+      "created": "2021-03-01",
+      "resolved": "2021-03-30",
+      "id": 4,
+      "visited": null
+    },
+    {
+      "issuedesc": "Search Filter is not working ",
+      "severity": "Major",
+      "status": "Open",
+      "created": "2021-03-01",
+      "resolved": "2021-03-29",
+      "id": 5,
+      "visited": null
+    },
+    {
+      "issuedesc": "Data has many errors",
+      "severity": "Critical",
+      "status": "Open",
+      "created": "2021-03-01",
+      "resolved": "2021-03-30",
+      "id": 6,
+      "visited": null
+    },
+    {
+      "issuedesc": "On Submit data is not added to server",
+      "severity": "Critical",
+      "status": "In Progress",
+      "created": "2021-03-02",
+      "resolved": "2021-04-09",
+      "id": 7,
+      "visited": null
+    },
+    {
+      "issuedesc": "Unable to view user details",
+      "severity": "Critical",
+      "status": "Open",
+      "created": "2021-03-01",
+      "resolved": "2021-04-10",
+      "id": 8,
       "visited": 1
     },
     {
-      "issuedesc": "Issue Using YUP and Formik",
+      "issuedesc": "Issue Description doesnot get displayed properly when clicked SEE MORE Option",
       "severity": "Critical",
       "status": "Closed",
-      "created": "2021-03-27",
-      "resolved": "2021-03-31",
-      "id": 4,
-      "visited": 3
+      "created": "2021-02-28",
+      "resolved": "2021-04-10",
+      "id": 9,
+      "visited": 2
+    },
+    {
+      "issuedesc": "Issue Delete example",
+      "severity": "Critical",
+      "status": "In Progress",
+      "created": "2021-04-16",
+      "resolved": "2021-04-30",
+      "id": 10
     }
   ],
   "Users": [

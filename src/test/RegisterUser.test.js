@@ -41,19 +41,17 @@ describe ( 'RegisterUser Component', () => {
  let wrapper;
  let store;
 
-    beforeEach( () => {
-      store = mockStore(state)
-      
+  beforeEach( () => {
+    store = mockStore(state)  
      wrapper = mount(
       <Router>
      <Provider store={store}>
        <RegisterUser history={historyMock}/>
      </Provider> </Router>
-   ); 
+  ); 
     
-    } );
-   
-    it('should render HomePage', () => {
+  } )
+  it('should render HomePage', () => {
       let dv = wrapper.find('ToastContainer')
       expect(dv.length).toEqual(1);
   });

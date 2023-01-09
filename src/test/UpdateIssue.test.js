@@ -64,12 +64,10 @@ describe ( 'RegisterUser Component', () => {
        <UpdateIssue history={historyMock} location={location}/>
      </Provider> </Router>
    ); 
-    
-    } );
-   
-    it('should render NavSeacrch Component', () => {
-      let dv = wrapper.find('NavSearch')
-      expect(dv.length).toEqual(1);
+  } );
+  it('should render NavSeacrch Component', () => {
+    let dv = wrapper.find('NavSearch')
+    expect(dv.length).toEqual(1);
   });
   it('should render Form Component ', () => {
     let dv = wrapper.find('Form')

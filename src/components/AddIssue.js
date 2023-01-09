@@ -11,6 +11,8 @@ import {bindActionCreators} from 'redux'
 import Bread from './Bread'
 import  Confirmation from './Confirmation'
 import React from 'react'
+import { useState } from "react";
+import PromptUser from './PromptUser'
 
 const initialValues = {
   issuedesc : '',
@@ -29,6 +31,8 @@ const validationSchema = Yup.object({
 })
 
 const AddIssue = (props) => {
+
+  let [isBlocking, setIsBlocking] = useState(true);
   
   const history = useHistory();
 
@@ -36,6 +40,7 @@ const AddIssue = (props) => {
 
   const onSubmit =  values => {
     //console.log(values)
+    setIsBlocking(false);
    props.actions.AddIssues(values)
     history.replace('/');
  }
@@ -107,6 +112,7 @@ const AddIssue = (props) => {
 
                 </Form>
             </Formik>
+            {isBlocking ?  (<PromptUser/>)  : null}    
                  </div> :
           ( props.history.push('/login') )
       }
